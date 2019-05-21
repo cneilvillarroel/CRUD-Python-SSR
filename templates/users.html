@@ -1,0 +1,49 @@
+<doctype html>
+
+
+    <style>
+    table{
+      padding: 15px;      
+    }
+    table td {
+      padding: 10px;
+      margin: 5px;
+    }
+    </style>
+
+    <title>List of users - Python Flask MySQL CRUD</title>
+    
+    <p><a href="{{ url_for('.add_user_view') }}"> Add User </a></p>
+    
+    <p>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+  </p>
+
+  <table>
+    {% for usuario in usuarios %}
+    <tr>
+      <td>{{ usuario.id }}       </td>
+      <td>{{ usuario.nombre }}    </td>
+      <td>{{ usuario.email }}</td>
+      <td>
+        <a href="/edit/{{usuario.id}}">Editar</a>
+        <a href="/delete/{{usuario.id}}">Eliminar</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <h1>{{total}}</h1>
+  
+	  
+      
+    
+    
